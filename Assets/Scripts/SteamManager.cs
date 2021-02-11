@@ -1,6 +1,9 @@
 ﻿
 using UnityEngine;
 using Steamworks;
+
+using System.Collections;
+using System.Collections.Generic;
 using System.Net;
 
 
@@ -18,7 +21,8 @@ public class SteamManager : MonoBehaviour
         else
             Destroy(this.gameObject);
 
-        InitClient();
+
+        // InitClient();
 
         DontDestroyOnLoad(this.gameObject);
     }
@@ -53,27 +57,54 @@ public class SteamManager : MonoBehaviour
             VersionString = "0.0.0.0",
             GamePort = 28015,
             QueryPort = 28016
-            
+
+
         };
+
+
+
 
         try
         {
             SteamServer.Init(1551700, init, true);
+
+            StartCoroutine(DebugPublicIPAddress());
         }
         catch (System.Exception)
         {
             Debug.Log("Could not initialize steam server. Is steam not open?");
         }
+
+        SteamServer.DedicatedServer = true;
+        SteamServer.LogOnAnonymous();
+
+
     }
 
 
+    IEnumerator DebugPublicIPAddress()
+    {
+        yield return new WaitForSeconds(5f);
+
+        Debug.Log("IP is: " + SteamServer.PublicIp);
+    }
+
+    
+
+    public void StopServer()
+    {
+        SteamServer.Shutdown();
+    }
 
     public bool refreshServerList = false;
+
+    public bool initClient = false;
 
     // Updates server list when refreshServerList is set to true through inspector
     private async void Update()
     {
-
+        if (initClient)
+            InitClient();
         
 
 
@@ -90,20 +121,6 @@ public class SteamManager : MonoBehaviour
                 }
 
                 Debug.Log("Found " + list.Responsive.Count + " internet servers.");
-            }
-
-
-            using (var list = new Steamworks.ServerList.LocalNetwork())
-            {
-                // list.AddFilter("map", "de_dust");
-                await list.RunQueryAsync();
-
-                foreach (var server in list.Responsive)
-                {
-                    Debug.Log($"{server.Address} {server.Name}");
-                }
-
-                Debug.Log("Found " + list.Responsive.Count + " local network servers.");
             }
 
             refreshServerList = false;

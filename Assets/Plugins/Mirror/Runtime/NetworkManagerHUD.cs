@@ -76,10 +76,10 @@ namespace Mirror
             {
                 // Server + Client
 
-                if (GUILayout.Button("Host (Server + Client)"))
-                {
-                    manager.StartHost();
-                }
+                //if (GUILayout.Button("Host (Server + Client)"))
+                //{
+                //    manager.StartHost();
+                //}
 
                 // Client + IP
                 GUILayout.BeginHorizontal();
@@ -91,7 +91,7 @@ namespace Mirror
                 GUILayout.EndHorizontal();
 
 
-                if (GUILayout.Button("Server Only"))   
+                if (GUILayout.Button("Server [Only]"))   
                     manager.StartServer();
                 
             }
@@ -121,7 +121,7 @@ namespace Mirror
 
         void StopButtons()
         {
-            // stop host if host mode
+            /* stop host if host mode
             if (NetworkServer.active && NetworkClient.isConnected)
             {
                 if (GUILayout.Button("Stop Host"))
@@ -129,8 +129,10 @@ namespace Mirror
                     manager.StopHost();
                 }
             }
+            */
+
             // stop client if client-only
-            else if (NetworkClient.isConnected)
+            if (NetworkClient.isConnected)
             {
                 if (GUILayout.Button("Stop Client"))
                 {
