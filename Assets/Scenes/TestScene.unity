@@ -331,6 +331,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   refreshServerList: 0
+  initClient: 0
+  debugIP: 0
 --- !u!4 &963113968
 Transform:
   m_ObjectHideFlags: 0
@@ -449,6 +451,7 @@ GameObject:
   - component: {fileID: 1146940430}
   - component: {fileID: 1146940427}
   - component: {fileID: 1146940428}
+  - component: {fileID: 1146940431}
   m_Layer: 0
   m_Name: NetworkManager
   m_TagString: Untagged
@@ -478,7 +481,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1146940426}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c7424c1070fad4ba2a7a96b02fbeb4bb, type: 3}
   m_Name: 
@@ -524,7 +527,7 @@ MonoBehaviour:
   serverBatchInterval: 0
   offlineScene: 
   onlineScene: 
-  transport: {fileID: 1146940428}
+  transport: {fileID: 1146940431}
   networkAddress: localhost
   maxConnections: 4
   disconnectInactiveConnections: 0
@@ -534,6 +537,23 @@ MonoBehaviour:
   autoCreatePlayer: 1
   playerSpawnMethod: 0
   spawnPrefabs: []
+--- !u!114 &1146940431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1146940426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61b93ff779f4ef84da855aef42076949, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Channels: 02000000
+  Timeout: 25
+  SteamAppID: 1551700
+  AllowSteamRelay: 1
+  SteamUserID: 0
 --- !u!1 &1965561279
 GameObject:
   m_ObjectHideFlags: 0

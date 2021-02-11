@@ -1,14 +1,16 @@
 ﻿
 using UnityEngine;
 using Steamworks;
-
 using System.Collections;
-using System.Collections.Generic;
 using System.Net;
+
+
+
 
 
 public class SteamManager : MonoBehaviour
 {
+
 
     public static SteamManager Instance;
 
@@ -87,6 +89,7 @@ public class SteamManager : MonoBehaviour
         yield return new WaitForSeconds(15f);
 
         Debug.Log("IP is: " + SteamServer.PublicIp);
+
     }
 
     
