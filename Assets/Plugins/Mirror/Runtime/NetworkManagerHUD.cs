@@ -76,10 +76,10 @@ namespace Mirror
             {
                 // Server + Client
 
-                //if (GUILayout.Button("Host (Server + Client)"))
-                //{
-                //    manager.StartHost();
-                //}
+                if (GUILayout.Button("Host (Server + Client)"))
+                {
+                    manager.StartHost();
+                }
 
                 // Client + IP
                 GUILayout.BeginHorizontal();

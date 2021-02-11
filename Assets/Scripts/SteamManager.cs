@@ -48,6 +48,8 @@ public class SteamManager : MonoBehaviour
 
     public void InitServer()
     {
+
+        /*
         SteamServerInit init = new SteamServerInit("ModDir", "Game Description")
         {
             Secure = true,
@@ -79,7 +81,7 @@ public class SteamManager : MonoBehaviour
 
         SteamServer.DedicatedServer = true;
         SteamServer.LogOnAnonymous();
-
+        */
 
     }
 
@@ -96,7 +98,7 @@ public class SteamManager : MonoBehaviour
 
     public void StopServer()
     {
-        SteamServer.Shutdown();
+        // SteamServer.Shutdown();
     }
 
     public bool refreshServerList = false;
