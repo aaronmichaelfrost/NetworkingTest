@@ -84,7 +84,7 @@ public class SteamManager : MonoBehaviour
 
     IEnumerator DebugPublicIPAddress()
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(15f);
 
         Debug.Log("IP is: " + SteamServer.PublicIp);
     }
@@ -100,12 +100,23 @@ public class SteamManager : MonoBehaviour
 
     public bool initClient = false;
 
+    public bool debugIP = false;
+
     // Updates server list when refreshServerList is set to true through inspector
     private async void Update()
     {
         if (initClient)
+        {
             InitClient();
-        
+            initClient = false;
+        }
+
+
+        if (debugIP)
+        {
+            Debug.Log(SteamServer.PublicIp);
+            debugIP = false;
+        }
 
 
         if (refreshServerList)
