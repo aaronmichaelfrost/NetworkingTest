@@ -1,6 +1,10 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Mirror;
+using System.Net;
+
+using Steamworks;
+
 
 /*
 	Documentation: https://mirror-networking.com/docs/Components/NetworkManager.html
@@ -32,6 +36,7 @@ public class NetworkManagerCallbacks : NetworkManager
     /// </summary>
     public override void Start()
     {
+
         base.Start();
     }
 
@@ -50,6 +55,8 @@ public class NetworkManagerCallbacks : NetworkManager
     {
         base.OnDestroy();
     }
+
+
 
     #endregion
 
@@ -218,16 +225,46 @@ public class NetworkManagerCallbacks : NetworkManager
     /// </summary>
     public override void OnStartHost() { }
 
+
+
+
     /// <summary>
     /// This is invoked when a server is started - including when a host is started.
     /// <para>StartServer has multiple signatures, but they all cause this hook to be called.</para>
     /// </summary>
-    public override void OnStartServer() { }
+    public override void OnStartServer() {
+
+
+        SteamServerInit init = new SteamServerInit
+        {
+            Secure = true,
+            DedicatedServer = true,
+            IpAddress = IPAddress.Any,
+            SteamPort = 27015,
+            GameDescription = "A Long Road From Home",
+            ModDir = "NetworkingTest",
+            VersionString = "0.0.0.0",
+            GamePort = 28015,
+            QueryPort = 28016
+        };
+
+        try{
+            Steamworks.SteamServer.Init(1551700, init, true);
+        }
+        catch (System.Exception)
+        {
+            Debug.Log("Could not initialize steam server. Is steam not open?");
+        }
+        
+    
+    }
 
     /// <summary>
     /// This is invoked when the client is started.
     /// </summary>
-    public override void OnStartClient() { }
+    public override void OnStartClient() {
+        
+    }
 
     /// <summary>
     /// This is called when a host is stopped.
