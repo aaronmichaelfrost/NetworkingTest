@@ -44,6 +44,18 @@ public class SteamManager : MonoBehaviour
                 }
             }
 
+
+            using (var list = new Steamworks.ServerList.LocalNetwork())
+            {
+                // list.AddFilter("map", "de_dust");
+                await list.RunQueryAsync();
+
+                foreach (var server in list.Responsive)
+                {
+                    Debug.Log($"{server.Address} {server.Name}");
+                }
+            }
+
             refreshServerList = false;
         }
 
