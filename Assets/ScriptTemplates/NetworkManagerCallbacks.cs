@@ -1,9 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Mirror;
-using System.Net;
 
-using Steamworks;
 
 
 /*
@@ -234,29 +232,7 @@ public class NetworkManagerCallbacks : NetworkManager
     /// </summary>
     public override void OnStartServer() {
 
-
-        SteamServerInit init = new SteamServerInit
-        {
-            Secure = true,
-            DedicatedServer = true,
-            IpAddress = IPAddress.Any,
-            SteamPort = 27015,
-            GameDescription = "A Long Road From Home",
-            ModDir = "NetworkingTest",
-            VersionString = "0.0.0.0",
-            GamePort = 28015,
-            QueryPort = 28016
-        };
-
-        try{
-            Steamworks.SteamServer.Init(1551700, init, true);
-        }
-        catch (System.Exception)
-        {
-            Debug.Log("Could not initialize steam server. Is steam not open?");
-        }
-        
-    
+        SteamManager.Instance.InitServer();
     }
 
     /// <summary>
