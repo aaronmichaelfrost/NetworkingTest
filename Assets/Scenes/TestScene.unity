@@ -450,8 +450,8 @@ GameObject:
   - component: {fileID: 1146940429}
   - component: {fileID: 1146940430}
   - component: {fileID: 1146940427}
-  - component: {fileID: 1146940428}
   - component: {fileID: 1146940431}
+  - component: {fileID: 1146940428}
   m_Layer: 0
   m_Name: NetworkManager
   m_TagString: Untagged
@@ -483,15 +483,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 1146940426}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7424c1070fad4ba2a7a96b02fbeb4bb, type: 3}
+  m_Script: {fileID: 11500000, guid: 6b0fecffa3f624585964b0d0eb21b18e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  port: 28015
+  Port: 7777
   NoDelay: 1
-  serverMaxMessageSize: 16384
-  serverMaxReceivesPerTick: 10000
-  clientMaxMessageSize: 16384
-  clientMaxReceivesPerTick: 1000
+  Interval: 10
+  FastResend: 2
+  CongestionWindow: 0
+  SendWindowSize: 4096
+  ReceiveWindowSize: 4096
+  debugLog: 0
+  statisticsGUI: 0
+  statisticsLog: 0
 --- !u!4 &1146940429
 Transform:
   m_ObjectHideFlags: 0
@@ -522,7 +526,7 @@ MonoBehaviour:
   runInBackground: 1
   autoStartServerBuild: 1
   showDebugMessages: 0
-  serverTickRate: 30
+  serverTickRate: 60
   serverBatching: 0
   serverBatchInterval: 0
   offlineScene: 
@@ -549,7 +553,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61b93ff779f4ef84da855aef42076949, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Channels: 02000000
+  Channels: 02000000000000000100000003000000
   Timeout: 25
   SteamAppID: 1551700
   AllowSteamRelay: 1

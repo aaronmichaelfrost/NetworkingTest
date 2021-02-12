@@ -234,7 +234,6 @@ public class NetworkManagerCallbacks : NetworkManager
     /// </summary>
     public override void OnStartServer() {
 
-        SteamManager.Instance.InitServer();
     }
 
     /// <summary>
@@ -253,7 +252,7 @@ public class NetworkManagerCallbacks : NetworkManager
     /// This is called when a server is stopped - including when a host is stopped.
     /// </summary>
     public override void OnStopServer() {
-        SteamManager.Instance.StopServer();
+
     }
 
     /// <summary>

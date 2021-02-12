@@ -121,7 +121,7 @@ namespace Mirror
 
         void StopButtons()
         {
-            /* stop host if host mode
+            // stop host if host mode
             if (NetworkServer.active && NetworkClient.isConnected)
             {
                 if (GUILayout.Button("Stop Host"))
@@ -129,7 +129,7 @@ namespace Mirror
                     manager.StopHost();
                 }
             }
-            */
+            
 
             // stop client if client-only
             if (NetworkClient.isConnected)
